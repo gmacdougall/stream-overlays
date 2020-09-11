@@ -1,5 +1,12 @@
+import styled from '@emotion/styled';
 import React from 'react';
 
-const IndexPage: React.SFC<HTMLDivElement> = () => <div>Hello world!</div>;
+const WeatherWidget = styled.div`
+  background-color: #333;
+`;
+
+const IndexPage: React.SFC<HTMLDivElement> = () => (
+  <WeatherWidget>Hello world!</WeatherWidget>
+);
 
 export default IndexPage;
