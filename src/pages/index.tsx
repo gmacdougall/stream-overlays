@@ -5,7 +5,7 @@ const WeatherWidget = styled.div`
   background-color: #333;
 `;
 
-const IndexPage: React.SFC<HTMLDivElement> = () => (
+const IndexPage: React.FC<HTMLDivElement> = () => (
   <WeatherWidget>Hello world!</WeatherWidget>
 );
 
