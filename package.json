@@ -18,6 +18,8 @@
   "dependencies": {
     "@emotion/core": "^10.0.35",
     "@emotion/styled": "^10.0.27",
+    "cross-fetch": "^3.0.6",
+    "emotion": "^10.0.27",
     "gatsby": "^2.24.54",
     "react": "^16.12.0",
     "react-dom": "^16.12.0",
@@ -33,6 +35,7 @@
     "eslint-plugin-prefer-arrow": "^1.1.7",
     "eslint-plugin-prettier": "^3.1.2",
     "eslint-plugin-react": "^7.18.3",
+    "eslint-plugin-react-hooks": "^4.1.2",
     "prettier": "2.1.1"
   },
   "repository": {
