@@ -1018,6 +1018,10 @@
   dependencies:
     "@hapi/hoek" "^8.3.0"
 
+"@intern0t/react-weather-icons@^1.0.3":
+  version "1.0.3"
+  resolved "https://registry.yarnpkg.com/@intern0t/react-weather-icons/-/react-weather-icons-1.0.3.tgz#428b5617a90eb9605c8c41096a449d944bd8a6aa"
+
 "@jest/types@^25.5.0":
   version "25.5.0"
   resolved "https://registry.yarnpkg.com/@jest/types/-/types-25.5.0.tgz#4d6a4793f7b9599fc3680877b856a97dbccf2a9d"

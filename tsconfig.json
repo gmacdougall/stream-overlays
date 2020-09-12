@@ -2,7 +2,6 @@
   "compilerOptions": {
     "allowJs": true,
     "allowSyntheticDefaultImports": true,
-    "incremental": true,
     "noUnusedLocals": true,
     "skipLibCheck": true,
     "sourceMap": true,
