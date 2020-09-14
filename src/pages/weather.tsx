@@ -20,8 +20,10 @@ import { useLocation } from '@reach/router';
 import queryString from 'query-string';
 import React, { useEffect, useState } from 'react';
 
+const color = '#bbb';
+
 const WeatherWidget = styled.div`
-  color: white;
+  color: ${color};
   position: absolute;
   right: 0;
   bottom: 0;
@@ -129,7 +131,7 @@ const Weather: React.FC = () => {
   return (
     <>
       <WeatherIconContainer>
-        {React.createElement(iconLookup(icon), { color: 'white', size: 64 })}
+        {React.createElement(iconLookup(icon), { color, size: 64 })}
       </WeatherIconContainer>
       <div>{temp}&deg;C</div>
     </>
