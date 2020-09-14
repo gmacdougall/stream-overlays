@@ -31,8 +31,9 @@ const WeatherWidget = styled.div`
 `;
 
 const WeatherIconContainer = styled.div`
-  width: 64px;
-  height: 64px;
+  width: 56px;
+  height: 56px;
+  margin-right: 16px;
 `;
 
 const WeatherContainer = styled.div`
@@ -41,7 +42,7 @@ const WeatherContainer = styled.div`
   justify-content: space-between;
   background-color: rgba(0, 0, 0, 0.3);
   margin-bottom: 5px;
-  padding-right: 20px;
+  padding: 5px 20px 5px 10px;
   border-radius: 15px 0 0 15px;
 `;
 
