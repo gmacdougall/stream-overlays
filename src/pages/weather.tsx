@@ -131,7 +131,7 @@ const Weather: React.FC = () => {
   return (
     <>
       <WeatherIconContainer>
-        {React.createElement(iconLookup(icon), { color, size: 64 })}
+        {React.createElement(iconLookup(icon), { color, size: 56 })}
       </WeatherIconContainer>
       <div>{temp}&deg;C</div>
     </>
