@@ -14,9 +14,7 @@ import {
   Thunderstorm,
   WeatherIcon,
 } from "@intern0t/react-weather-icons";
-import OpenWeatherAPI from "openweather-api-node";
 import type { NextPage } from "next";
-import { useRouter } from "next/router";
 import { createElement, useEffect, useState } from "react";
 import type { FC, VFC } from "react";
 
@@ -73,29 +71,22 @@ const Weather: VFC = () => {
   const [temp, setTemp] = useState<string | number>("--");
   const [icon, setIcon] = useState("01d");
 
-  const router = useRouter();
-  const apiKey = router.query.api_key;
-
   useEffect(() => {
     const doFetch = (): void => {
-      if (apiKey && !Array.isArray(apiKey)) {
-        const weather = new OpenWeatherAPI({
-          key: apiKey,
-          locationName: "Toronto,ON,CA",
-          units: "metric",
+      fetch("/api/current_weather")
+        .then((data) => data.json())
+        // TODO: Add error handling
+        // TODO: Add type safety, json is any
+        .then((json) => {
+          setIcon(json.icon);
+          setTemp(json.temp);
         });
-
-        weather.getCurrent().then((data) => {
-          setTemp(Math.round(data.weather.temp.cur));
-          setIcon(data.weather.icon.raw);
-        });
-      }
     };
 
     doFetch();
     const interval = setInterval(doFetch, 10 * 60 * 1000);
     return () => clearInterval(interval);
-  }, [apiKey]);
+  }, []);
 
   return (
     <RoundedBox>
