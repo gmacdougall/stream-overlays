@@ -9,7 +9,6 @@
   },
   "dependencies": {
     "@intern0t/react-weather-icons": "^1.0.3",
-    "cross-fetch": "^3.0.6",
     "next": "12.0.9",
     "openweather-api-node": "^1.3.2",
     "react": "17.0.2",
