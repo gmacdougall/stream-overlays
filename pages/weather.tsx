@@ -19,7 +19,7 @@ import { createElement, useEffect, useState } from "react";
 import type { FC, VFC } from "react";
 
 const RoundedBox: FC = ({ children }) => (
-  <div className="bg-black/30 rounded-l-xl mb-2 p-1 pl-4 pr-4">{children}</div>
+  <div className="bg-black/75 rounded-l-xl mb-2 p-1 pl-4 pr-4">{children}</div>
 );
 
 const Time: VFC = () => {
