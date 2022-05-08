@@ -67,10 +67,22 @@
   resolved "https://registry.yarnpkg.com/@humanwhocodes/object-schema/-/object-schema-1.2.1.tgz#b520529ec21d8e5945a1851dfd1c32e94e39ff45"
   integrity sha512-ZnQMnLV4e7hDlUvw8H+U8ASL02SS2Gn6+9Ac3wGGLIe7+je2AeAOxPY+izIPJDfFDb7eDjev0Us8MO1iFRN8hA==
 
-"@intern0t/react-weather-icons@^1.0.3":
-  version "1.0.3"
-  resolved "https://registry.yarnpkg.com/@intern0t/react-weather-icons/-/react-weather-icons-1.0.3.tgz#428b5617a90eb9605c8c41096a449d944bd8a6aa"
-  integrity sha512-rUyUdjacbPJvg6aEOaUqkjKjkOZz6ct7NFGshJeP1ghsLHOev68scnGBkv3WpgaJostM1DDeDiyeXqUzvkunEg==
+"@iconify-icons/fluent@^1.2.7":
+  version "1.2.7"
+  resolved "https://registry.yarnpkg.com/@iconify-icons/fluent/-/fluent-1.2.7.tgz#54318d4023b4a74326f3a9bd4f8d9cdde06ef847"
+  integrity sha512-6KzjkliR6k7mqgg33fY2vhKLdJPwcNxrvhAPwRn7OiGVqEMoOzMGOajSK418A0HIS8Xtgab2e0OqzUgUoLXRsA==
+  dependencies:
+    "@iconify/types" "^1.1.0"
+
+"@iconify/react@^3.2.1":
+  version "3.2.1"
+  resolved "https://registry.yarnpkg.com/@iconify/react/-/react-3.2.1.tgz#d18da31cec58c1aa8fdf4def451cc7e3196d88de"
+  integrity sha512-yKzixjC9ct9RC/aSGo1OGxkG2rpfhlr/urRz6k2YZlIBzn92PBTlqtSx8o8dFYEorr3eUFSCBZFzBy1yw5jsAA==
+
+"@iconify/types@^1.1.0":
+  version "1.1.0"
+  resolved "https://registry.yarnpkg.com/@iconify/types/-/types-1.1.0.tgz#dc15fc988b1b3fd558dd140a24ede7e0aac11280"
+  integrity sha512-Jh0llaK2LRXQoYsorIH8maClebsnzTcve+7U3rQUSnC11X4jtPnFuyatqFLvMxZ8MLG8dB4zfHsbPfuvxluONw==
 
 "@next/env@12.0.9":
   version "12.0.9"

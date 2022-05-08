@@ -1,22 +1,38 @@
-import {
-  Cloud,
-  Cloudy,
-  DayCloudy,
-  DayFog,
-  DayShowers,
-  DaySunny,
-  NightClear,
-  NightCloudy,
-  NightFog,
-  NightShowers,
-  Rain,
-  Snow,
-  Thunderstorm,
-  WeatherIcon,
-} from "@intern0t/react-weather-icons";
+import { Icon, addIcon } from "@iconify/react/dist/offline";
 import type { NextPage } from "next";
-import { createElement, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import type { FC, VFC } from "react";
+
+import weatherCloudy from "@iconify-icons/fluent/weather-cloudy-48-regular";
+import weatherFog from "@iconify-icons/fluent/weather-fog-48-regular";
+import weatherMoon from "@iconify-icons/fluent/weather-moon-48-regular";
+import weatherPartlyCloudyDay from "@iconify-icons/fluent/weather-partly-cloudy-day-48-regular";
+import weatherPartlyCloudyNight from "@iconify-icons/fluent/weather-partly-cloudy-night-48-regular";
+import weatherRain from "@iconify-icons/fluent/weather-rain-48-regular";
+import weatherRainShowersDay from "@iconify-icons/fluent/weather-rain-showers-day-48-regular";
+import weatherRainShowersNight from "@iconify-icons/fluent/weather-rain-showers-night-48-regular";
+import weatherSnow from "@iconify-icons/fluent/weather-snow-48-regular";
+import weatherSunny from "@iconify-icons/fluent/weather-sunny-48-regular";
+import weatherThunderstorm from "@iconify-icons/fluent/weather-thunderstorm-48-regular";
+
+addIcon("01d", weatherSunny);
+addIcon("02d", weatherPartlyCloudyDay);
+addIcon("03d", weatherCloudy);
+addIcon("04d", weatherCloudy);
+addIcon("09d", weatherRainShowersDay);
+addIcon("10d", weatherRain);
+addIcon("11d", weatherThunderstorm);
+addIcon("13d", weatherSnow);
+addIcon("50d", weatherFog);
+addIcon("01n", weatherMoon);
+addIcon("02n", weatherPartlyCloudyNight);
+addIcon("03n", weatherCloudy);
+addIcon("04n", weatherCloudy);
+addIcon("09n", weatherRainShowersNight);
+addIcon("10n", weatherRain);
+addIcon("11n", weatherThunderstorm);
+addIcon("13n", weatherSnow);
+addIcon("50n", weatherFog);
 
 const RoundedBox: FC = ({ children }) => (
   <div className="bg-black/75 rounded-l-xl mb-2 p-1 pl-4 pr-4">{children}</div>
@@ -44,29 +60,6 @@ const Time: VFC = () => {
   );
 };
 
-const iconLookup = (apiIcon: string): WeatherIcon => {
-  const map = new Map();
-  map.set("01d", DaySunny);
-  map.set("02d", DayCloudy);
-  map.set("03d", Cloud);
-  map.set("04d", Cloudy);
-  map.set("09d", DayShowers);
-  map.set("10d", Rain);
-  map.set("11d", Thunderstorm);
-  map.set("13d", Snow);
-  map.set("50d", DayFog);
-  map.set("01n", NightClear);
-  map.set("02n", NightCloudy);
-  map.set("03n", Cloud);
-  map.set("04n", Cloudy);
-  map.set("09n", NightShowers);
-  map.set("10n", Rain);
-  map.set("11n", Thunderstorm);
-  map.set("13n", Snow);
-  map.set("50n", NightFog);
-  return map.get(apiIcon);
-};
-
 const Weather: VFC = () => {
   const [temp, setTemp] = useState<string | number>("--");
   const [icon, setIcon] = useState("01d");
@@ -92,10 +85,7 @@ const Weather: VFC = () => {
     <RoundedBox>
       <div className="flex">
         <div className="w-14 h-14 mr-4">
-          {createElement(iconLookup(icon), {
-            color: "rgb(229 231 235)",
-            size: 56,
-          })}
+          <Icon icon={icon} width="56" height="56" />
         </div>
         <div>{temp}&deg;C</div>
       </div>

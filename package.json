@@ -8,13 +8,14 @@
     "lint": "next lint"
   },
   "dependencies": {
-    "@intern0t/react-weather-icons": "^1.0.3",
     "next": "12.0.9",
     "openweather-api-node": "^1.3.2",
     "react": "17.0.2",
     "react-dom": "17.0.2"
   },
   "devDependencies": {
+    "@iconify-icons/fluent": "^1.2.7",
+    "@iconify/react": "^3.2.1",
     "@types/node": "17.0.13",
     "@types/react": "17.0.38",
     "@typescript-eslint/eslint-plugin": "^5.10.1",
