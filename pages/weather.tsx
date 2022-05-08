@@ -1,7 +1,7 @@
 import { Icon, addIcon } from "@iconify/react/dist/offline";
 import type { NextPage } from "next";
 import { useEffect, useState } from "react";
-import type { FC, VFC } from "react";
+import type { FC, PropsWithChildren } from "react";
 import useSWR from "swr";
 
 import weatherCloudy from "@iconify-icons/fluent/weather-cloudy-48-regular";
@@ -37,11 +37,11 @@ addIcon("11n", weatherThunderstorm);
 addIcon("13n", weatherSnow);
 addIcon("50n", weatherFog);
 
-const RoundedBox: FC = ({ children }) => (
+const RoundedBox: FC<PropsWithChildren<{}>> = ({ children }) => (
   <div className="bg-black/75 rounded-l-xl mb-2 p-1 pl-4 pr-4">{children}</div>
 );
 
-const Time: VFC = () => {
+const Time: FC = () => {
   const [time, setTime] = useState(new Date());
 
   useEffect(() => {
@@ -65,7 +65,7 @@ const Time: VFC = () => {
 
 const fetcher = (url: string) => fetch(url).then((r) => r.json());
 
-const Weather: VFC = () => {
+const Weather: FC = () => {
   const { data, error } = useSWR<WeatherResponse>(
     "/api/current_weather",
     fetcher,
