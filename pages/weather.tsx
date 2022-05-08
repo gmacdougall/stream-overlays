@@ -2,6 +2,7 @@ import { Icon, addIcon } from "@iconify/react/dist/offline";
 import type { NextPage } from "next";
 import { useEffect, useState } from "react";
 import type { FC, VFC } from "react";
+import useSWR from "swr";
 
 import weatherCloudy from "@iconify-icons/fluent/weather-cloudy-48-regular";
 import weatherFog from "@iconify-icons/fluent/weather-fog-48-regular";
@@ -14,6 +15,8 @@ import weatherRainShowersNight from "@iconify-icons/fluent/weather-rain-showers-
 import weatherSnow from "@iconify-icons/fluent/weather-snow-48-regular";
 import weatherSunny from "@iconify-icons/fluent/weather-sunny-48-regular";
 import weatherThunderstorm from "@iconify-icons/fluent/weather-thunderstorm-48-regular";
+
+import type { WeatherResponse } from "./api/current_weather";
 
 addIcon("01d", weatherSunny);
 addIcon("02d", weatherPartlyCloudyDay);
@@ -60,34 +63,26 @@ const Time: VFC = () => {
   );
 };
 
+const fetcher = (url: string) => fetch(url).then((r) => r.json());
+
 const Weather: VFC = () => {
-  const [temp, setTemp] = useState<string | number>("--");
-  const [icon, setIcon] = useState("01d");
+  const { data, error } = useSWR<WeatherResponse>(
+    "/api/current_weather",
+    fetcher,
+    {
+      refreshInterval: 10 * 60 * 1000,
+    }
+  );
 
-  useEffect(() => {
-    const doFetch = (): void => {
-      fetch("/api/current_weather")
-        .then((data) => data.json())
-        // TODO: Add error handling
-        // TODO: Add type safety, json is any
-        .then((json) => {
-          setIcon(json.icon);
-          setTemp(json.temp);
-        });
-    };
-
-    doFetch();
-    const interval = setInterval(doFetch, 10 * 60 * 1000);
-    return () => clearInterval(interval);
-  }, []);
+  if (error) return <p>Error</p>;
 
   return (
     <RoundedBox>
       <div className="flex">
         <div className="w-14 h-14 mr-4">
-          <Icon icon={icon} width="56" height="56" />
+          {data && <Icon icon={data.icon} width="56" height="56" />}
         </div>
-        <div>{temp}&deg;C</div>
+        <div>{data?.temp ?? "--"}&deg;C</div>
       </div>
     </RoundedBox>
   );

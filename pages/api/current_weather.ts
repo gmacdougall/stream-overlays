@@ -1,14 +1,14 @@
 import type { NextApiRequest, NextApiResponse } from "next";
 import OpenWeatherAPI from "openweather-api-node";
 
-type Response = Readonly<{
+export type WeatherResponse = Readonly<{
   icon: string;
   temp: number;
 }>;
 
 const currentWeather = async (
   _: NextApiRequest,
-  res: NextApiResponse<Response>
+  res: NextApiResponse<WeatherResponse>
 ) => {
   const apiKey = process.env.OPEN_WEATHER_API_KEY;
   if (!apiKey) {
