@@ -1,8 +1,8 @@
 import { Icon, addIcon } from "@iconify/react/dist/offline";
 import type { NextPage } from "next";
-import { useEffect, useState } from "react";
 import type { FC, PropsWithChildren } from "react";
 import useSWR from "swr";
+import type { BareFetcher } from "swr";
 
 import weatherCloudy from "@iconify-icons/fluent/weather-cloudy-48-regular";
 import weatherFog from "@iconify-icons/fluent/weather-fog-48-regular";
@@ -42,14 +42,10 @@ const RoundedBox: FC<PropsWithChildren<{}>> = ({ children }) => (
 );
 
 const Time: FC = () => {
-  const [time, setTime] = useState(new Date());
-
-  useEffect(() => {
-    const interval = setInterval(() => {
-      setTime(new Date());
-    }, 1000);
-    return () => clearInterval(interval);
-  }, []);
+  const { data: time } = useSWR("time", async () => new Date(), {
+    refreshInterval: 1000,
+    dedupingInterval: 1000,
+  });
 
   const formattedTime = new Intl.DateTimeFormat("en", {
     hour: "numeric",
@@ -63,16 +59,13 @@ const Time: FC = () => {
   );
 };
 
-const fetcher = (url: string) => fetch(url).then((r) => r.json());
+const fetcher: BareFetcher<WeatherResponse> = (url: string) =>
+  fetch(url).then((r) => r.json());
 
 const Weather: FC = () => {
-  const { data, error } = useSWR<WeatherResponse>(
-    "/api/current_weather",
-    fetcher,
-    {
-      refreshInterval: 10 * 60 * 1000,
-    }
-  );
+  const { data, error } = useSWR("/api/current_weather", fetcher, {
+    refreshInterval: 10 * 60 * 1000,
+  });
 
   if (error) return <p>Error</p>;
 
