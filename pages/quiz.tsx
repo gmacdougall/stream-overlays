@@ -37,7 +37,7 @@ const Score: FC<{idx: number}> = ({ idx }) => {
       onContextMenu={onRightClick}
     >
       <img src={styles[idx].image} className="h-full" />
-      <p className="align-right text-white ml-8 mr-8 w-32" style={{ fontSize: 112 }}>
+      <p className="align-right text-white ml-8 mr-8 w-32" style={{ fontSize: '16vh' }}>
         {score}
       </p>
     </div>
